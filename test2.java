@@ -5,12 +5,10 @@ import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 public class test2 {
-    WebDriver driver;
-    WebElement Login;
-    WebElement Password;
-    WebElement SigningIn;
-    WebElement navigationClick;
-    WebElement logout;
+    WebDriver driver = null;
+    public static By Login = By.cssSelector("#email");
+    public static By Password = By.cssSelector("#pass");
+    public static By SigningIn = By.cssSelector("#u_0_b");
 
     @BeforeMethod
     public void doBeforeTest() {
@@ -18,70 +16,46 @@ public class test2 {
         driver = new ChromeDriver();
         driver.get("https://www.facebook.com/");
         driver.manage().window().maximize();
-
-        Login = driver.findElement(By.cssSelector("#email"));
-        Password = driver.findElement(By.cssSelector("#pass"));
-        SigningIn = driver.findElement(By.cssSelector("#u_0_b"));
-
     }
 
     @Test
     public void verifyIfSigningInWithValidCredentialsIsPossible() {
-
-        Login.sendKeys("annarudamyotkina@gmail.com");
-        Password.sendKeys("idnt07800");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
-
+        driver.findElement(test2.Login).sendKeys("annarudamyotkina@gmail.com");
+        driver.findElement(test2.Password).sendKeys("idnt07800");
+        driver.findElement(test2.SigningIn).click();
         String actualUrl=driver.getCurrentUrl();
         String expectedUrl="https://www.facebook.com/";
-        try {
-            Assert.assertEquals(actualUrl, expectedUrl);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualUrl, expectedUrl);
     }
 
     @Test
     public void verifyIfSigningInWithWrongPasswordIfPossible() {
-
-        Login.sendKeys("ann.rudomyotkina@mail.ru");
-        Password.sendKeys("123456abcd");
-        SigningIn.click();
-
+        driver.findElement(test2.Login).sendKeys("ann.rudomyotkina@mail.ru");
+        driver.findElement(test2.Password).sendKeys("123456abcd");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test
+    /*@Test
     public void verifyIfSigningInWithExampleCredentialsIsPossible() {
-
-        Login.sendKeys("example@gmail.com");
-        Password.sendKeys("example");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+        driver.findElement(test2.Login).sendKeys("example@gmail.com");
+        driver.findElement(test2.Password).sendKeys("example");
+        driver.findElement(test2.SigningIn).click();
 
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
         try {
             Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test failed");
-        } catch (Throwable e) {
             System.out.println("Test passed");
+        } catch (Throwable e) {
+            System.out.println("Test failed");
         }
 
     }
 
-    @Test
+    /*@Test
     public void verifyIfFacebookWorksCorrectlyWhenUserWantsToSignInWithoutUsingCredentials() {
         SigningIn.click();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
@@ -197,7 +171,7 @@ public class test2 {
 
 
     @Test
-    public void verifyIfSiteWorksCorrectlyDuringUsingSensitivePassword() {
+    public void verifyIfSiteWorksCorrectlyWhenUserSignsInByUsingSensitivePassword() {
         Login.sendKeys("annarudamyotkina@gmail.com");
         Password.sendKeys("iDnT07800");
         SigningIn.click();
@@ -214,7 +188,7 @@ public class test2 {
     }
 
     @Test
-    public void signingInByUsingNotAllowedCharactersInEmail() {
+    public void verifyIfFacebookWorksCorrectlyWhenUserSignsInByUsingNotAllowedCharactersInEmail() {
         Login.sendKeys("anna+rudam%yotki*na@gmail.com");
         Password.sendKeys("wrong12password12");
         SigningIn.click();
@@ -233,6 +207,6 @@ public class test2 {
     @AfterMethod
     public void doAfterTest() {
         driver.quit();
-    }
+    }*/
 
 }
