@@ -38,58 +38,34 @@ public class test2 {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    /*@Test
+    @Test
     public void verifyIfSigningInWithExampleCredentialsIsPossible() {
         driver.findElement(test2.Login).sendKeys("example@gmail.com");
         driver.findElement(test2.Password).sendKeys("example");
         driver.findElement(test2.SigningIn).click();
-
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    /*@Test
+    @Test
     public void verifyIfFacebookWorksCorrectlyWhenUserWantsToSignInWithoutUsingCredentials() {
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
-
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
     public void verifyIfFacebookWorksCorrectlyWhenUserSignsInByUsingSpacesInValidCredentials() {
-        Login.sendKeys("a nnar udamyot kina@gmail.com");
-        Password.sendKeys("id nt 0 7 800");
-        SigningIn.click();
+        driver.findElement(test2.Login).sendKeys("a nnar udamyot kina@gmail.com");
+        driver.findElement(test2.Password).sendKeys("id nt 0 7 800");
+        driver.findElement(test2.SigningIn).click();
+
         driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
 
         String actualName = driver.findElement(By.xpath("//*[text()='Log In as Evie Lebowski']")).getText();
         String expectedName = "Facebook - Log In or Sign Up";
-
-        String actualEmail = driver.findElement(By.xpath("//*[text()='annarudamyotkina@gmail.com']")).getText();
-        String expectedEmail = "  ";
-
-        try {
-            Assert.assertEquals(actualEmail, expectedEmail);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
         try {
             Assert.assertEquals(actualName, expectedName);
             System.out.println("Test passed");
@@ -97,116 +73,79 @@ public class test2 {
             System.out.println("Test failed");
         }
 
+        String actualEmail = driver.findElement(By.xpath("//*[text()='annarudamyotkina@gmail.com']")).getText();
+        String expectedEmail = "  ";
+        try {
+            Assert.assertEquals(actualEmail, expectedEmail);
+            System.out.println("Test passed");
+        } catch (Throwable e) {
+            System.out.println("Test failed");
+        }
     }
 
     @Test
     public void verifyIfSiteWorksCorrectlyWhenUserSignsInByUsingTheNameOfAccountInsteadOfEmailOrPhone() {
-        Login.sendKeys("Evie Lebowski");
-        Password.sendKeys("idnt07800");
-        SigningIn.click();
+        driver.findElement(test2.Login).sendKeys("Evie Lebowski");
+        driver.findElement(test2.Password).sendKeys("idnt07800");
+        driver.findElement(test2.SigningIn).click();
         driver.manage().timeouts().pageLoadTimeout(1000, TimeUnit.SECONDS);
-
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
     public void verifyIfSigningInWithEmptyEmailAndValidPasswordIsPossible() {
-        Password.sendKeys("idnt07800");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(1000, TimeUnit.SECONDS);
-
+        driver.findElement(test2.Password).sendKeys("idnt07800");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
     public void verifyIfSigningInWithCorrectEmailAndEmptyPasswordIsPossible() {
-        Login.sendKeys("annarudamyotkina@gmail.com");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(1000, TimeUnit.SECONDS);
-
+        driver.findElement(test2.Login).sendKeys("annarudamyotkina@gmail.com");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
     public void verifyIfFacebookWorksCorrectlyWhenUserSignsInByUsingUnregisteredPhoneNumber() {
-        Login.sendKeys("+37498896188");
-        Password.sendKeys("idnt07800");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(1000, TimeUnit.SECONDS);
-
+        driver.findElement(test2.Login).sendKeys("+37498896188");
+        driver.findElement(test2.Password).sendKeys("idnt07800");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
 
     @Test
     public void verifyIfSiteWorksCorrectlyWhenUserSignsInByUsingSensitivePassword() {
-        Login.sendKeys("annarudamyotkina@gmail.com");
-        Password.sendKeys("iDnT07800");
-        SigningIn.click();
-        driver.manage().timeouts().pageLoadTimeout(2000, TimeUnit.SECONDS);
-
+        driver.findElement(test2.Login).sendKeys("annarudamyotkina@gmail.com");
+        driver.findElement(test2.Password).sendKeys("iDnT07800");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
     public void verifyIfFacebookWorksCorrectlyWhenUserSignsInByUsingNotAllowedCharactersInEmail() {
-        Login.sendKeys("anna+rudam%yotki*na@gmail.com");
-        Password.sendKeys("wrong12password12");
-        SigningIn.click();
-
+        driver.findElement(test2.Login).sendKeys("anna+rudam%yotki*na@gmail.com");
+        driver.findElement(test2.Password).sendKeys("idnt07800");
+        driver.findElement(test2.SigningIn).click();
         String expectedTitle = "Facebook - Log In or Sign Up";
         String actualTitle = driver.getTitle();
-        try {
-            Assert.assertEquals(actualTitle, expectedTitle);
-            System.out.println("Test passed");
-        } catch (Throwable e) {
-            System.out.println("Test failed");
-        }
-
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @AfterMethod
     public void doAfterTest() {
         driver.quit();
-    }*/
+    }
 
 }
