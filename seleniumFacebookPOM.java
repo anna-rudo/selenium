@@ -23,7 +23,6 @@ public class seleniumFacebookPOM {
 
     public seleniumFacebookPOM (WebDriver driver){
         this.driver = driver;
-        //PageFactory.initElements(driver,this);
     }
 
     public void enterValidEmail() {
@@ -58,6 +57,14 @@ public class seleniumFacebookPOM {
         }
     }
 
+//    public boolean verifyTitle() {
+//        if (driver.getTitle().equals("Facebook - Log In or Sign Up")) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
     public boolean verifyURL() {
         if (driver.getCurrentUrl().equals("https://www.facebook.com/")) {
             return true;
@@ -65,13 +72,5 @@ public class seleniumFacebookPOM {
             return false;
         }
     }
-
-//    public boolean verifyTitle() {
-//        if (driver.getTitle().equals("Log into Facebook | Facebook")) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 
 }
